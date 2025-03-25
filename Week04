@@ -1,12 +1,17 @@
-#include <Wire.h>				//I2C 통신을 위한 기본 라이브러리
-#include <LiquidCrystal_I2C.h>	//I2C LCD 라이브러리
+#include <Wire.h>				    //I2C 통신을 위한 기본 라이브러리
+#include <LiquidCrystal_I2C.h>	    //I2C LCD 라이브러리
+#define TRIG 13
+#define ECHO 12
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 void setup()
 {
-  lcd.init();					//I2C LCD 초기화
-  lcd.backlight();				//백라이트 켜기
+  Serial.begin(9600);
+  pinMode(TRIG, OUTPUT);
+  pinMode(ECHO, INPUT);
+  lcd.init();					    //I2C LCD 초기화
+  lcd.backlight();				    //백라이트 켜기
   lcd.print("LCD init");
   delay(2000);
   lcd.clear();
@@ -14,11 +19,22 @@ void setup()
 
 void loop()
 {
-  lcd.setCursor(16,0);
-  lcd.print("Hello, World!");
-  
-  for(int position = 0; position < 16; position++){ 
-    lcd.scrollDisplayLeft();    //오른쪽에서 왼쪽으로 순차출력하는 명령문
-    delay(150);
+  long duration, distance;
+    
+  digitalWrite(TRIG, LOW);           //초음파거리센서 작동 코드
+  delayMicroseconds(2);
+  digitalWrite(TRIG, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG, LOW);
+    
+  duration = pulseIn(ECHO, HIGH);
+    
+  distance = duration * 17 / 1000;   //거리계산 코드
+
+  lcd.setCursor(0,0);                //LCD출력 좌표설정
+  lcd.print(distance);               //LCD화면의 계산 값 출력
+  lcd.println(" cm");                //cm 붙이기
+  delay(150);
+  lcd.clear();                       //LCD값 초기화
   }
 }
