@@ -18,7 +18,7 @@ void loop()
   lcd.print("Hello, World!");
   
   for(int position = 0; position < 16; position++){ 
-    lcd.scrollDisplayLeft();//오른쪽에서 왼쪽으로 순차출력하는 명령문
+    lcd.scrollDisplayLeft();    //오른쪽에서 왼쪽으로 순차출력하는 명령문
     delay(150);
   }
 }
