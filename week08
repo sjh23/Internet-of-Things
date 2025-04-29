@@ -1,0 +1,23 @@
+라즈베리파이 설치방법
+https://www.raspberrypi.com/software/
+Install Raspberry Pi OS using Raspberry Pi Imager (Download for Windows) 클릭해서 다운로드
+라즈베리파이 이미지 클릭 -> 라즈베리파이 3 B+ 버전, 32bit 유심 리더기 연결 설치
+
+라즈베리파이는 전원이 켜져있는 상태에서 연결하면 반응 X
+
+컵퓨터의 키보드, 마우스, 인터넷 선, 파워선 연결
+자기 아이피 번호 입력 
+
+명령프롬프트에서 쓰는 명령어
+
+vim 사용가능
+
+vim 명령어 설치방법
+sudo apt install vim -y
+
+라즈베리파이 한글패치법
+sudo apt-get install fonts -unfonts -core -y
+sudo apt-get install ibus -hangul -y
+sudo reboot
+
+-y는 설치 허용을 미리해주는 명령어
