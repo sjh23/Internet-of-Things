@@ -1,0 +1,68 @@
+교수님 깃허브
+https://github.com/sonnonet/2024_inhatc
+
+라즈베리파이 리눅스에서 influxdb를 설치하는 명령어
+pip install influxdb
+
+리눅스에서 influxdb database 생성법
+influxdb
+create database (database name)
+
+
+미세먼지센서 라즈베리파이에서 사용하는 코드
+import time
+import requests, json
+from influxdb import InfluxDBClient as influxdb
+import serial
+
+seri = serial.Serial('/dev/ttyACM0', baudrate = 9600, timeout = None)
+
+while(True):
+    time.sleep(1)
+    if seri.in_waiting !=0:
+      content = seri.readline()
+      a = float(content.decode())
+      //데이터베이스 테이블 생성하는 코드
+      data = [{                 
+          'measurement' : 'dust',        
+          'tags':{
+              'InhaUni' : '2222',
+          },
+          'fields':{
+              'dust' : a,
+          }
+      }]
+      client = None
+      try:
+          client = influxdb('localhost',8086,'root','root','dust')
+      except Exception as e:
+        print ("Exception" + str(e))
+      if client is not None:
+          try:
+              client.write_points(data)
+          except Exception as e:
+              print("Exception write " + str(e))
+        finally:
+            client.close()
+      print("running influxdb OK")
+  =====================================
+
+시험 무조건 나온다고 하심
+a = float(content.decode())
+그냥 데이터를 출력할 때는 상관없지만 문자를 붙여서 출력할 때는 다른 split를 사용해서 구성해야함
+
+Grafana 
+-데이터 조회 사이트
+
+Grafana에 접속이 안될 경우
+sudo systemctl start Grafana-server  <- Grafana 접속할 수 있게 해주는 명령어
+
+Grafana 사용법
+1.Grafana 접속
+2.Connection -> Data sources로 들어가고 influxdb 생성
+3.Dashobard 생성
+4.파이썬을 통해서 한번이라고 데이터가 입력되었으면 값이 입력될 수 있게 됨
+5.값 입력
+6.출력되었던 값이 그래프로 패널에 그려짐
+
+http://localhost:8086
