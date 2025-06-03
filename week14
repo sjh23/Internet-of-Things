@@ -1,0 +1,9 @@
+Wi-Fi
+ - MAC service set, MAC data frame
+ - CSMA/CA 동작 방식
+ZigBee
+ - ZigBee 물리 계층   
+ - MAC 계층 슈퍼프레임
+ - 분산 주소 할당 기법의 이해 및 응용연습
+ • Cskip(d)
+ - 지그비 라우팅 기법 (트리, 메쉬)
