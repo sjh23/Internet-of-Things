@@ -17,7 +17,7 @@ module TestC
 }
 implementation
 {
-  meddage_t testMsgBffr;
+  message_t testMsgBffr;
   test_data_msg_t *testMsg;
 
   uint32_t seqNo;
@@ -58,7 +58,7 @@ implementation
     testMsg->seqNo = seqNo++;
     testMsg->type = 2; //THL type 2
 
-    if (call RadioSend.send(AM_BROADCAST_ADDR. &testMsgBffr,
+    if (call RadioSend.send(AM_BROADCAST_ADDR, &testMsgBffr,
       sizeof(test_data_msg_t)) != SUCCESS) sendDone();
     call Led.led2Toggle();
   }
@@ -104,7 +104,7 @@ implementation
 
   event void Temp.readDone(error_t error, uint16_t val) {
     //if (error != SUCCESS) call Leds.led0On();
-    testMsg->Temp = error == SUCCESS ? cal : 0xFFFA;
+    testMsg->Temp = error == SUCCESS ? val : 0xFFFA;
     post readTask();
   }
   event void Humi.readDone(error_t error, uint16_t val) {
