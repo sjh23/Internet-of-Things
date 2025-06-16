@@ -8,7 +8,7 @@ ZigBee
  • Cskip(d)
  - 지그비 라우팅 기법 (트리, 메쉬)
 
-![Image](https://github.com/user-attachments/assets/9137bd5a-b79f-413a-88fd-9a576ffdaf02)
+[Image](https://github.com/user-attachments/assets/9137bd5a-b79f-413a-88fd-9a576ffdaf02)
 
 IEEE(Institute of Electrical and Electronics Engineers)는 전기, 전자공학, 
 컴퓨터 공학, 정보 기술 등 다양한 공학 분야에서 세계 최대의 전문가 단체입니다. 
@@ -29,7 +29,7 @@ Wi-Fi Service Set
  - ESS(Extended Service Set) 
 • 두 개 이상의 BSS들이 모여서 구성
 
-![Image](https://github.com/user-attachments/assets/8b740925-6bbb-4b22-9a7e-ff36eeec00f4)
+[Image](https://github.com/user-attachments/assets/8b740925-6bbb-4b22-9a7e-ff36eeec00f4)
 
 ====================================================================================================
 
@@ -304,7 +304,7 @@ MAC계층 - ZigBee 주소할당
 
 
 분산 할당 식 - 깊이에 따른 주소 할당 크기
-![Image](https://github.com/user-attachments/assets/5e997970-4dc9-4541-9304-4c2ec8d154e7)
+[Image](https://github.com/user-attachments/assets/5e997970-4dc9-4541-9304-4c2ec8d154e7)
  Cm: 최대자식의 개수
  Lm: 네트워크 Tree의 최대 깊이
  Rm: 자식으로 가질 수 있는 최대 ZigBee라우터 개수
